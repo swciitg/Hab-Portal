@@ -1,0 +1,58 @@
+<section id="notice" class="sectionlist bg-gray-100" style="display: none">
+  <div class="flex justify-between items-center mx-8 md:mx-32 mt-8 md:mt-20 mb-6 md:mb-12">
+    <div class="font-bold text-xl md:text-4xl">Notices</div>
+    <div>
+      <input type="text" onkeyup="searchHostelNotice()" type="search" id="searchHostelNotice" 
+            class="h-12 w-40 md:w-80 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none mySearch1"
+            placeholder="Search...">
+    </div>
+  </div>
+  <!-- <nav class="w-full sm:flex mt-14 mb-8">
+    <h1 class="font-bold
+    text-xl
+    md:text-4xl md:ml-32
+    mt-8 md:mt-20 mb-6 md:mb-16
+    flex
+    justify-center
+    md:justify-start">Notices</h1>
+    <ul class=" hidden sm:flex md:mr-24">
+      <li class="py-2 px-1 mr-3">
+        <div class="relative">
+          <input type="text" onkeyup="searchHostelNotice()" type="search" id="searchHostelNotice" 
+            class="h-12 w-80 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none mySearch1"
+            placeholder="Search...">
+          <div class="absolute top-3 right-3"> <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </nav> -->
+  <!-- <div class="mx-8 md:mx-32"> -->
+  <div class=" mx-3 md:mx-32 flex flex-wrap justify-center md:justify-between mb-8" id="hostelnotice">
+    <% notices.forEach((notice,i)=>{ %>
+      <!-- single-notice-card -->
+      <div class="w-full md:w-5/12 h-auto m-2 md:mb-4 p-9 border-2 rounded-lg shadow-lg">
+        <div class="text-blue-600 font-bold text-sm float-left"><%=notice.category.toUpperCase() %></div>
+        <div class="text-blue-600 font-bold text-sm float-right">
+          <%=notice.creation.getDate()+'/'+(notice.creation.getMonth()+1)+'/'+notice.creation.getFullYear()%>
+        </div>
+        <br>
+        <div class="font-bold text-xl my-3">
+          <%= notice.title %> :
+        </div>
+        <p class="text-justify text-sm md:text-base">
+          <%= notice.description%>
+        </p>
+        <div class="text-center font-normal text-sm text-gray-500 mt-3">
+          <% if(notice.path.indexOf("https://")==-1) { %>
+            <a class="hover:text-black hover:underline cursor-pointer"
+              href="/hab/hostels/<%= hostel.id %>/notice/pdf/<%= notice.id %>  " target="_blank">View pdf</a>
+            <% } else { %>
+              <a class="hover:text-black hover:underline cursor-pointer" href="<%=notice.path%>" target="_blank">View
+                link</a>
+              <% } %>
+        </div>
+      </div>
+      <% }) %>
+  </div>
+</section>

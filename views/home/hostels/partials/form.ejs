@@ -1,0 +1,211 @@
+<section id="form" class="sectionlist" style="display: none">
+  <div
+    class="
+      font-bold
+      text-xl
+      md:text-4xl md:ml-32
+      mt-8
+      md:mt-20
+      mb-6
+      md:mb-12
+      flex
+      justify-center
+      md:justify-start
+    "
+  >
+    Forms
+  </div>
+  <div class="container mx-auto pb-6 px-4 sm:px-36">
+    <table
+      class="table-fixed w-full my-4 text-center"
+      style="box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px"
+    >
+      <tbody class="h-12 bg-gray-500">
+        <tr>
+          <td class="w-1/8 p-1 text-white dd">Form No.</td>
+          <td class="w-1/2 text-white dd">Subject</td>
+          <td class="w-1/8 text-white dd hidden sm:table-cell">Format</td>
+          <td class="w-1/8 text-white dd hidden sm:table-cell">Date</td>
+          <td class="w-1/8 text-white">Link</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <% forms.forEach((form,i)=>{ %>
+      <table
+        class="table-fixed w-full my-5 text-center"
+        style="box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px"
+      >
+        <tbody class="ls">
+          <tr>
+            <td class="w-1/8 ds h-12"><%= form.number %></td>
+            <td class="w-1/2 ds"><%= form.title %></td>
+            <% if(form.path.indexOf("https://")==-1) { %>
+            <td class="w-1/8 ds hidden sm:table-cell">Pdf</td>
+            <% }else{ %>
+            <td class="w-1/8 ds hidden sm:table-cell">Link</td>
+            <% } %>
+            <td class="w-1/8 ds hidden sm:table-cell">
+              <%=form.creation.getDate()+'/'+(form.creation.getMonth()+1)+'/'+form.creation.getFullYear()
+              %>
+            </td>
+            <td class="w-1/8">
+              <% if(form.path.indexOf("https://")==-1) { %>
+              <a
+                class="hover:text-blue-500 text-blue-500 underline"
+                href="/hab/hostels/<%= hostel.id %>/form/pdf/<%= form.id %>"
+                rel="noreferrer"
+                target="_blank"
+              >
+                View </a
+              ><% }else{ %>
+              <a
+                class="hover:text-blue-500 text-blue-500 underline"
+                href="<%= form.path %>"
+                rel="noreferrer"
+                target="_blank"
+              >
+                View </a
+              ><% } %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<!-- <section id="form" class="sectionlist" style="display: none">
+<div class="inline-flex flex-col space-y-5 items-start justify-start container mx-auto p-6 sm:py-12 sm:px-36" >
+  <div class="flex justify-between w-full mb-4 sm:mb-6">
+    <p class="text-2xl sm:text-3xl font-bold">Forms</p>
+  </div>
+  <div class="inline-flex space-x-8 items-center justify-center px-9 py-4 bg-gray-500 border rounded border-gray-400 container ">
+      <p class="w-24 text-base tracking-wide leading-normal text-center text-white">Form No.</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-white"</p>
+      <p class="text-base tracking-wide leading-normal text-center text-white" style="width: 617px;">Subject</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-white"</p>
+      <p class="w-24 text-base tracking-wide leading-normal text-center text-white">Format</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-white"</p>
+      <p class="w-24 text-base tracking-wide leading-normal text-center text-white">Date</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-white"</p>
+      <p class="w-12 text-base tracking-wide leading-normal text-center text-white">Time</p>
+  </div>
+
+<div class="inline-flex space-x-8 items-center justify-center px-9 py-4 bg-white border rounded border-gray-300 container">
+      <p class="w-24 text-base tracking-wide leading-normal text-center">APPL/01</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="text-base tracking-wide leading-normal text-center text-gray-800" style="width: 617px;">The HAB shall allot</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-24 text-base tracking-wide leading-normal underline text-center">
+  <a
+            class="hover:text-blue-500 text-blue-500 underline"
+            href=""
+            rel="noreferrer"
+            target="_blank"
+          >
+            View
+          </a></p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-24 text-base tracking-wide leading-normal text-center">03/04/2019 </p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-12 text-base tracking-wide leading-normal text-center">15:13</p>
+  </div>
+
+  <div class="inline-flex space-x-8 items-center justify-center px-9 py-4 bg-white border rounded border-gray-300 container">
+      <p class="w-24 text-base tracking-wide leading-normal text-center">APPL/01</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="text-base tracking-wide leading-normal text-center text-gray-800" style="width: 617px;">The HAB shall allot</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-24 text-base tracking-wide leading-normal underline text-center">
+  <a
+            class="hover:text-blue-500 text-blue-500 underline"
+            href=""
+            rel="noreferrer"
+            target="_blank"
+          >
+            View
+          </a></p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-24 text-base tracking-wide leading-normal text-center">03/04/2019 </p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-12 text-base tracking-wide leading-normal text-center">15:13</p>
+  </div>
+  <div class="inline-flex space-x-8 items-center justify-center px-9 py-4 bg-white border rounded border-gray-300 container">
+      <p class="w-24 text-base tracking-wide leading-normal text-center">APPL/01</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="text-base tracking-wide leading-normal text-center text-gray-800" style="width: 617px;">The HAB shall allot</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-24 text-base tracking-wide leading-normal underline text-center">
+  <a
+            class="hover:text-blue-500 text-blue-500 underline"
+            href=""
+            rel="noreferrer"
+            target="_blank"
+          >
+            View
+          </a></p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-24 text-base tracking-wide leading-normal text-center">03/04/2019 </p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-12 text-base tracking-wide leading-normal text-center">15:13</p>
+  </div>
+  <div class="inline-flex space-x-8 items-center justify-center px-9 py-4 bg-white border rounded border-gray-300 container">
+      <p class="w-24 text-base tracking-wide leading-normal text-center">APPL/01</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="text-base tracking-wide leading-normal text-center text-gray-800" style="width: 617px;">The HAB shall allot</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-24 text-base tracking-wide leading-normal underline text-center">
+  <a
+            class="hover:text-blue-500 text-blue-500 underline"
+            href=""
+            rel="noreferrer"
+            target="_blank"
+          >
+            View
+          </a></p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-24 text-base tracking-wide leading-normal text-center">03/04/2019 </p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-12 text-base tracking-wide leading-normal text-center">15:13</p>
+  </div>
+  <div class="inline-flex space-x-8 items-center justify-center px-9 py-4 bg-white border rounded border-gray-300 container">
+      <p class="w-24 text-base tracking-wide leading-normal text-center">APPL/01</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="text-base tracking-wide leading-normal text-center text-gray-800" style="width: 617px;">The HAB shall allot</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-24 text-base tracking-wide leading-normal underline text-center">
+  <a
+            class="hover:text-blue-500 text-blue-500 underline"
+            href=""
+            rel="noreferrer"
+            target="_blank"
+          >
+            View
+          </a></p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-24 text-base tracking-wide leading-normal text-center">03/04/2019 </p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-12 text-base tracking-wide leading-normal text-center">15:13</p>
+  </div>
+  <div class="inline-flex space-x-8 items-center justify-center px-9 py-4 bg-white border rounded border-gray-300 container">
+      <p class="w-24 text-base tracking-wide leading-normal text-center">APPL/01</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="text-base tracking-wide leading-normal text-center text-gray-800" style="width: 617px;">The HAB shall allot</p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-24 text-base tracking-wide leading-normal underline text-center">
+  <a
+            class="hover:text-blue-500 text-blue-500 underline"
+            href=""
+            rel="noreferrer"
+            target="_blank"
+          >
+            View
+          </a></p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-24 text-base tracking-wide leading-normal text-center">03/04/2019 </p>
+      <p class="transform -rotate-90 w-6 h-0.5 border-gray-300"</p>
+      <p class="w-12 text-base tracking-wide leading-normal text-center">15:13</p>
+  </div>
+</div>
+</section> -->

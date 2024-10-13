@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+        habbackendnode:
+                build:
+                        context: .
+                        dockerfile: Dockerfile.prod
+                extra_hosts:
+                        - "host.docker.internal:host-gateway"
+                volumes:
+                        - ./public:/home/node/app/public
+                        - habfiles:/home/node/app/uploads
+                ports:
+                        - "8081:8081"
+                env_file:
+                        - .env
+
+volumes:
+        habfiles:
