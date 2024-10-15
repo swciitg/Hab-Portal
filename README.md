@@ -5,7 +5,7 @@
 
 Clone the project
 ```
-  git clone https://github.com/swciitg/HAB-2.0_21.git
+  git clone https://github.com/swciitg/Hab-Portal.git
 ```
 Go to the project directory
 ```
