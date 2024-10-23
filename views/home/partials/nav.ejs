@@ -1,46 +1,154 @@
-<section id="navigation" class="hostelsnav">
-  <div class="md:px-20 lg:px-32 py-3 flex justify-center">
-    <img id="nav_logo" src="/hab/images/headers/c.png" alt="logo" class="nav_logo hidden md:inline mr-5" />
-    <div class="w-1/3 sm:w-1/4 lg:w-44 flex justify-end items-center">
-      <a href="https://online.iitg.ac.in/sa/" class="w-9/12 sm:w-full mr-3 sm:mr-5" target="_blank">
+<section id="navigation" class="hostelsnav fixed top-0 left-0 right-0 z-50 bg-white">
+  <div class="container mx-auto px-4 md:px-20 lg:px-32 py-3 flex justify-between items-center">
+
+    <!-- Mobile View: LOGIN Button (Visible on Mobile Only) -->
+    <div class="flex md:hidden mr-4">
+      <button class="border rounded px-4 py-1" style="border: 1px solid #8a8886">LOGIN</button>
+    </div>
+
+    <!-- Logo and HAB Portal Link (Hidden on Mobile View) -->
+    <div class="flex items-center">
+      <img id="nav_logo" src="/hab/images/headers/c.png" alt="logo" class="nav_logo hidden md:inline mr-5" />
+      <a href="https://online.iitg.ac.in/sa/" class="w-full sm:w-9/12 mr-3 sm:mr-5 hidden md:block" target="_blank">
         <button class="w-full py-0.5 flex justify-center bg-white rounded-sm" style="border: 1px solid #8a8886">
           <img src="/hab/images/nav/iit_logo.png" alt="logo" class="max-w-full" style="transform: scale(0.9)" />
           <span class="max-w-full ml-0.5">HAB Portal</span>
         </button>
       </a>
     </div>
-    <div class="w-2/3 sm:3/4 lg:w-max my-1 flex justify-start items-center relative">
-      <button id="slideLeft"
-        class="absolute top-0.5 rounded bg-white shadow-lg -left-0 h-full z-20 transform scale-75 opacity-50">
+
+    <!-- Navigation Links (Adjusted for Mobile) -->
+    <div class="w-full md:w-auto flex items-center relative justify-center">
+
+      <!-- Desktop: Sliding Buttons (Hidden on Mobile) -->
+      <button id="slideLeft" class="hidden md:block absolute top-0.5 rounded bg-white shadow-lg -left-0 h-full z-20 transform scale-75 opacity-50">
         <img src="/hab/images/nav/left.svg" alt="Left" class="h-full rounded transform scale-50" />
       </button>
-      <ul class="tabs pl-1 sm:pl-4 font-semibold">
-        <li class="tab px-1.5 sm:px-3 text-black text-opacity-60 hover:text-opacity-100 tabStyle">
+
+      <ul class="tabs pl-1 sm:pl-4 font-semibold flex space-x-4">
+        <li class="tab text-black text-opacity-60 hover:text-opacity-100 tabStyle">
           <a class="active" href="#home">Home</a>
         </li>
-        <li class="tab px-1.5 sm:px-3 text-black text-opacity-60 hover:text-opacity-100">
+        <li class="tab text-black text-opacity-60 hover:text-opacity-100">
           <a href="#notices" onclick="fetchAPINotices(`<%= BASEURL %>`)">Notices</a>
         </li>
-        <li class="tab px-1.5 sm:px-3 text-black text-opacity-60 hover:text-opacity-100">
+        <li class="tab text-black text-opacity-60 hover:text-opacity-100">
           <a href="#forms" onclick="fetchAPIForms(`<%= BASEURL %>`)">Forms</a>
         </li>
-        <li class="tab px-1.5 sm:px-3 text-black text-opacity-60 hover:text-opacity-100">
+
+        <!-- Desktop View: Extra Tabs (Visible Only on Desktop) -->
+        <li class="hidden md:block">
           <a href="#hostels" onclick="fetchAPIHostels(`<%= BASEURL %>`)">Hostels</a>
         </li>
-        <li class="tab px-1.5 sm:px-3 text-black text-opacity-60 hover:text-opacity-100">
-          <a href="#management" onclick="fetchAPIFunctionaries(`<%= BASEURL %>`)">Functionaries</a>
+        <li class="hidden md:block">
+          <a href="#management" onclick="fetchAPIFunctionaries(`<%= BASEURL %>`)">Management</a>
         </li>
-        <li class="tab px-1.5 sm:px-3 text-black text-opacity-60 hover:text-opacity-100">
+        <li class="hidden md:block">
           <a href="#ordinance" onclick="fetchAPIOrdinance(`<%= BASEURL %>`)">Ordinance and Rules</a>
         </li>
-        <li class="tab px-1.5 sm:px-3 text-black text-opacity-60 hover:text-opacity-100">
+        <li class="hidden md:block">
           <a href="#utils" onclick="fetchAPIUtils(`<%= BASEURL %>`)">Utilities</a>
         </li>
       </ul>
-      <button id="slideRight"
-        class="ml-5 absolute top-0.5 rounded bg-white shadow-lg -right-1 h-full z-20 transform scale-75 opacity-70">
+
+      <!-- Dropdown Button for Mobile View -->
+      <div class="relative md:hidden">
+        <button class="text-black text-opacity-60 hover:text-opacity-100 text-xl" id="mobileDropdownButton">...</button>
+        <ul id="mobileDropdown" class="absolute right-0 bg-white border rounded shadow-md mt-1 hidden w-max">
+          <li class="px-4 py-2 text-black text-opacity-60 hover:text-opacity-100 hover:bg-gray-100">
+            <a href="#hostels" onclick="fetchAPIHostels(`<%= BASEURL %>`)">Hostels</a>
+          </li>
+          <li class="px-4 py-2 text-black text-opacity-60 hover:text-opacity-100 hover:bg-gray-100">
+            <a href="#management" onclick="fetchAPIFunctionaries(`<%= BASEURL %>`)">Management</a>
+          </li>
+          <li class="px-4 py-2 text-black text-opacity-60 hover:text-opacity-100 hover:bg-gray-100">
+            <a href="#ordinance" onclick="fetchAPIOrdinance(`<%= BASEURL %>`)">Ordinance and Rules</a>
+          </li>
+          <li class="px-4 py-2 text-black text-opacity-60 hover:text-opacity-100 hover:bg-gray-100">
+            <a href="#utils" onclick="fetchAPIUtils(`<%= BASEURL %>`)">Utilities</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Desktop: Sliding Right Button (Hidden on Mobile) -->
+      <button id="slideRight" class="hidden md:block ml-5 absolute top-0.5 rounded bg-white shadow-lg -right-1 h-full z-20 transform scale-75 opacity-70">
         <img src="/hab/images/nav/right.svg" alt="Right" class="h-full rounded transform scale-50" />
       </button>
     </div>
   </div>
 </section>
+
+<!-- Add margin-top to the body or main content to ensure it's not hidden behind the navbar -->
+<style>
+  body {
+    margin-top: 70px; /* Adjust this value based on your navbar height */
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    /* Hide slide buttons on mobile */
+    #slideLeft, #slideRight {
+      display: none;
+    }
+
+    /* Hide HAB Portal button on mobile */
+    a.w-9\\/12.sm\\:w-full.mr-3.sm\\:mr-5 {
+      display: none;
+    }
+
+    /* Show LOGIN button on mobile only */
+    .flex.md\\:hidden {
+      display: flex !important;
+    }
+
+    /* Ensure extra tabs are hidden in mobile and dropdown shows */
+    .hidden.md\\:block {
+      display: none !important;
+    }
+  }
+
+  /* Show desktop tabs by default (above 768px) */
+  @media (min-width: 769px) {
+    .hidden.md\\:block {
+      display: block !important;
+    }
+
+    .tabs li.relative {
+      display: none;
+    }
+  }
+
+  /* Center the navbar container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto; /* Centers the container */
+  }
+
+  /* Adjust spacing between elements */
+  .mr-4 {
+    margin-right: 1rem; /* Adjust this value for spacing between LOGIN and other elements */
+  }
+
+  /* Dropdown positioning to appear below the button */
+  #mobileDropdown {
+    right: 0; /* Align the dropdown to the right of the button */
+    margin-top: 0.5rem; /* Space between button and dropdown */
+  }
+
+  /* Ensure content within flex is centered horizontally */
+  .hostelsnav .flex {
+    justify-content: space-between;
+  }
+</style>
+
+<!-- JavaScript for Dropdown -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var dropdownButton = document.getElementById('mobileDropdownButton');
+    var dropdownMenu = document.getElementById('mobileDropdown');
+
+    dropdownButton.addEventListener('click', function () {
+      dropdownMenu.classList.toggle('hidden');
+    });
+  });
+</script>
