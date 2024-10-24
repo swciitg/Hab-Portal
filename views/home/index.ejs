@@ -32,11 +32,6 @@
         border-left: 1.5px solid #525252;
       }
 
-      .tab {
-        display: inline-block;
-        /* padding: 0 0.75rem; */
-      }
-
       .hostelsnav {
         background-color: transparent;
         transition: all 0.4s;
@@ -137,15 +132,15 @@
         background-position: 10px center;
         background-size: 18px;
         padding-left: 40px;
-        height: 40px; 
-        outline: none; 
-        transition: box-shadow 0.2s; 
+        height: 40px;
+        outline: none;
+        transition: box-shadow 0.2s;
         width: 100%;
         box-sizing: border-box;
       }
       .mySearch1::placeholder {
-       color: black; 
-       font-weight: bold;
+        color: black;
+        font-weight: bold;
       }
       .mySearch1:focus {
         border: 1px solid #000;
@@ -381,6 +376,16 @@
           pauseOnFocus: false,
         }).mount();
       });
+    </script>
+    <!-- To handle hidden items on navbar -->
+    <script>
+      // Function to toggle the visibility of hidden options
+      document
+        .getElementById("moreOptionsButton")
+        .addEventListener("click", function () {
+          const moreOptions = document.getElementById("moreOptions");
+          moreOptions.classList.toggle("hidden");
+        });
     </script>
   </body>
 </html>
