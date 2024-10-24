@@ -134,11 +134,22 @@
       .mySearch1 {
         background-image: url("/hab/images/svg/search.svg");
         background-repeat: no-repeat;
-        background-position: 5px;
-        padding-left: 24px;
-        height: 30px;
+        background-position: 10px center;
+        background-size: 18px;
+        padding-left: 40px;
+        height: 40px; 
+        outline: none; 
+        transition: box-shadow 0.2s; 
+        width: 100%;
+        box-sizing: border-box;
       }
-
+      .mySearch1::placeholder {
+       color: black; 
+       font-weight: bold;
+      }
+      .mySearch1:focus {
+        border: 1px solid #000;
+      }
       .notice_card,
       .form_card {
         min-width: 21.5rem;
