@@ -36,6 +36,16 @@ exports.getHome = async (req, res) => {
     uploads.forEach((upload) => {
       uploadImages.push(`uploads/adminUploads/${upload.image}`);
     });
+
+    // temporarily add uploadImages for slider
+    if (uploadImages.length === 0) {
+      uploadImages = [
+        "/hab/images/nav/hostel.jpg",
+        "/hab/images/nav/hostel.jpg",
+        "/hab/images/nav/hostel.jpg",
+        "/hab/images/nav/hostel.jpg",
+      ];
+    }
     return res.render("home/index", {
       announcements,
       uploads,
@@ -98,6 +108,7 @@ exports.getHostels = async (req, res) => {
 exports.getFunctionaries = async (req, res) => {
   try {
     const functionaries = await Functionary.find({}).sort("-creation");
+    // console.log("functionaries", functionaries);
     return res.status(200).send(functionaries);
   } catch (error) {
     console.log(error);
