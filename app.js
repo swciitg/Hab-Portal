@@ -9,9 +9,9 @@ const session = require("express-session");
 const mongoSanitize = require("express-mongo-sanitize");
 const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
-const cookieSession = require("cookie-session");
+// const cookieSession = require("cookie-session");
 const helmet = require("helmet");
-const url = "mongodb://localhost/hab2";
+// const url = "mongodb://localhost/hab2";
 //const url = process.env.MONGO_URI;
 const app = express();
 
@@ -23,7 +23,7 @@ const PORT = process.env.PORT;
 const passportSetup = require("./config/passport");
 
 require("dotenv").config();
-const { MONGO_URI} = process.env;
+const { MONGO_URI } = process.env;
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,

@@ -3,6 +3,7 @@ const fs = require("fs");
 
 exports.getFunctionary = async (req, res) => {
   const functionaries = await Functionary.find({}).sort("priority_number");
+
   return res.render("functionary/index", { functionaries });
 };
 

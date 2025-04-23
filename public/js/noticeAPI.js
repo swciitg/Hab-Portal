@@ -157,12 +157,13 @@ async function fetchAPINotices(BASEURL) {
                           </h2>
                           <h2 
                           class="tracking-widest text-xs title-font font-medium text-blue-500 mb-1">
-                           ${notice.creation.substring(0, 4) +
-          "/" +
-          notice.creation.substring(5, 7) +
-          "/" +
-          notice.creation.substring(8, 10)
-          }
+                           ${
+                             notice.creation.substring(0, 4) +
+                             "/" +
+                             notice.creation.substring(5, 7) +
+                             "/" +
+                             notice.creation.substring(8, 10)
+                           }
                               
                       </h2>
                           
@@ -237,12 +238,13 @@ async function fetchAPIForms(BASEURL) {
                                     </h2>
                                     <h2
                                         class="tracking-widest text-xs title-font font-medium text-blue-500 mb-1">
-                                         ${form.creation.substring(0, 4) +
-          "/" +
-          form.creation.substring(5, 7) +
-          "/" +
-          form.creation.substring(8, 10)
-          }
+                                         ${
+                                           form.creation.substring(0, 4) +
+                                           "/" +
+                                           form.creation.substring(5, 7) +
+                                           "/" +
+                                           form.creation.substring(8, 10)
+                                         }
                                             
                                     </h2>
                                 </div>
@@ -303,16 +305,18 @@ async function fetchAPIHostels(BASEURL) {
                                 ${hostel.name} Hostel
                             </h2>
                             <p class="mb-4 ">
-                                 ${hostel.description.length > 70
-            ? hostel.description.substring(0, 70) +
-            "..."
-            : hostel.description
-          } 
+                                 ${
+                                   hostel.description.length > 70
+                                     ? hostel.description.substring(0, 70) +
+                                       "..."
+                                     : hostel.description
+                                 } 
                             </p>
                             <button style=" color:white"
                                 class="inline-flex text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded">
-                                <a href="/hab/hostels/${hostel.name
-          }">View More</a>
+                                <a href="/hab/hostels/${
+                                  hostel.name
+                                }">View More</a>
                             </button>
                         </div>
                         <!-- <p class="pt-0.5 pb-1 text-sm font-normal text-gray-600">twitter_handle</p> -->
@@ -336,28 +340,19 @@ async function fetchAPIFunctionaries(BASEURL) {
   const res = await fetch(`${BASEURL}/hab/functionaries`);
   const data = await res.json();
 
-  // console.log(res);
-  // console.log(data);
   functionaries = data;
-  // console.log(categories);
-  //console.log(functionaries);
-  const container = document.querySelector("#management");
+
   let parentDiv = document.getElementById("div_functionaries");
 
-  //console.log(container);
   if (!functionaries || functionaries.length === 0) {
     let htmlString = "";
     let yn = parentDiv.parentElement.parentElement.parentElement;
     yn.style.justifyContent = "center";
     htmlString = `<h1>No functionaries To Show</h1>`;
     parentDiv.innerHTML = htmlString;
-  }
-
-  // console.log(parentDiv);
-  // console.log("haha");
-  else {
+  } else {
+    parentDiv.innerHTML = "";
     functionaries.forEach((functionary) => {
-      parentDiv.innerHTML = ""
       let htmlString = "";
       htmlString = ` <div class="profileCard h-auto m-4 bg-white rounded-sm"
                     style="box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 3.6px rgba(0, 0, 0, 0.13);width: 300px;">
@@ -426,18 +421,20 @@ async function fetchAPIOrdinance(BASEURL) {
                                 <div class="flex justify-between">
                                     <h2
                                         class="tracking-widest text-xs title-font font-medium text-blue-600 mb-1 ">
-                                        ${ordinance.category &&
-          ordinance.category.toUpperCase()
-          }
+                                        ${
+                                          ordinance.category &&
+                                          ordinance.category.toUpperCase()
+                                        }
                                     </h2>
                                     <h2
                                         class="tracking-widest text-xs title-font font-medium text-blue-500 mb-1">
-                                        ${ordinance.creation.substring(0, 4) +
-          "/" +
-          ordinance.creation.substring(5, 7) +
-          "/" +
-          ordinance.creation.substring(8, 10)
-          }
+                                        ${
+                                          ordinance.creation.substring(0, 4) +
+                                          "/" +
+                                          ordinance.creation.substring(5, 7) +
+                                          "/" +
+                                          ordinance.creation.substring(8, 10)
+                                        }
                                             
                                     </h2>
                                 </div>
